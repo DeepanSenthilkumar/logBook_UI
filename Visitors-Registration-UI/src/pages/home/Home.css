@@ -1,0 +1,42 @@
+.container-class {
+    position: relative;
+    top: 70px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    min-height: 239px;
+    padding: 30px;
+}
+
+.header-container {
+    min-height: 30px;
+    /* Top: 266px; */
+    Left: 51px;
+    text-align: center;
+    vertical-align: text-top;
+}
+
+.header-text {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 151%;
+    margin-bottom: 53px;
+}
+
+.secondary-text {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 151%;
+    letter-spacing: 1px;
+}
+
+.inline-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inline-block span {
+    color: #000000;
+    font-size: 20px;
+  white-space: nowrap;
+}

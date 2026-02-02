@@ -1,0 +1,9 @@
+.Admin h2 {
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    margin-bottom: 40px;
+}
+
+.Admin table {
+    border-radius: 12px;
+}

@@ -1,0 +1,21 @@
+.icon-Container {
+    height: 56px;
+    border: none !important;
+}
+
+.nav {
+    /* top: 90px; */
+    /* position: relative; */
+    border-radius: 4px !important;
+    height: 56px;
+    /* padding: 0 36px 0 36px !important; */
+    padding-left: 23px !important;
+    padding-right: 23px !important;
+    background-color: #FFFFFF !important;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .icon-holder {
+    
+} */
