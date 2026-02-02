@@ -31,8 +31,8 @@ const Navbar = () => {
 
   return (
     <>
-    <header className='nav navbar-dark'>
-      <div>
+    <header className='nav'>
+      <div className="nav-inner">
        <img src={icon} className='icon-Container' alt="Icon" />
       </div>
 

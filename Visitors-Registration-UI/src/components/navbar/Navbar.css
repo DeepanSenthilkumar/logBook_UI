@@ -1,21 +1,59 @@
-.icon-Container {
+/* .icon-Container {
     height: 56px;
     border: none !important;
-}
+} */
 
-.nav {
+/* .nav { */
     /* top: 90px; */
     /* position: relative; */
-    border-radius: 4px !important;
-    height: 56px;
     /* padding: 0 36px 0 36px !important; */
+    /* border-radius: 4px !important;
+    height: 56px;
     padding-left: 23px !important;
     padding-right: 23px !important;
     background-color: #FFFFFF !important;
     display: flex;
     justify-content: space-between;
-}
+} */
 
 /* .icon-holder {
     
 } */
+
+.nav {
+  width: 100%;
+  background-color: #ffffff !important;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Inner navbar container */
+.nav-inner {
+  /* width: 94%; */
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .nav-inner {
+    max-width: 768px;
+    padding: 0 24px;
+  }
+}
+
+/* Laptop and above */
+@media (min-width: 1024px) {
+  .nav-inner {
+    max-width: 1200px;
+    padding: 0 32px;
+  }
+}
+
+.icon-Container {
+  height: 56px;
+}
+

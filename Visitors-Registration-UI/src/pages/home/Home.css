@@ -5,26 +5,27 @@
     background-color: #ffffff;
     min-height: 239px;
     padding: 30px;
+    width: 100%
 }
 
 .header-container {
-    min-height: 30px;
+    /* min-height: 30px; */
     /* Top: 266px; */
-    Left: 51px;
+    /* Left: 51px; */
     text-align: center;
-    vertical-align: text-top;
+    /* vertical-align: text-top; */
 }
 
 .header-text {
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 151%;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 120%;
     margin-bottom: 53px;
 }
 
 .secondary-text {
     font-weight: 400;
-    font-size: 18px;
+    font-size: 17px;
     line-height: 151%;
     letter-spacing: 1px;
 }
@@ -32,11 +33,20 @@
 .inline-block {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .inline-block span {
     color: #000000;
-    font-size: 20px;
+    font-size: 18px;
   white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .inline-block {
+    justify-content: center;
+    gap: 32px;
+  }
 }
