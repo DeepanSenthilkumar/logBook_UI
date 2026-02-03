@@ -11,7 +11,7 @@ const Home = () => {
         <p className='secondary-text'>Welcome to iCodex Publishing Solutions - Where ideas Become Impactful Publications </p>
       </div>
 
-      <div className='d-flex gap-3 justify-content-center'>
+      <div className='d-flex gap-3'>
         <Button variant='admin-landing' text='Admin' to='/login'></Button>
         <Button variant='visitor-landing' text='Visitor' to='/visitor'></Button>
       </div>

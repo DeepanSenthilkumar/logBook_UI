@@ -8,10 +8,10 @@
 body {
   background-color: #f8f8f8;
 }
-/* .page-Design {
+.page-Design {
   padding: 90px 16px 36px 16px;
   min-height: 800px;
-} */
+}
 
 /* .container-box {
   padding: 20px;
@@ -23,71 +23,4 @@ button {
 
 .btn-danger {
   color: #FFFFFF !important;
-}
-
-/* ===============================
-   GLOBAL RESPONSIVE BREAKPOINTS
-   =============================== */
-
-:root {
-  --mobile-padding: 16px;
-  --tablet-padding: 24px;
-  --desktop-padding: 32px;
-
-  --tablet-max-width: 768px;
-  --laptop-max-width: 1024px;
-  --desktop-max-width: 1200px;
-}
-
-/* ===============================
-   PAGE WRAPPER (ALL PAGES)
-   =============================== */
-
-.page-Design {
-  min-height: 100vh;
-  padding: 90px var(--mobile-padding) 36px;
-  display: flex;
-  justify-content: center;
-}
-
-/* Inner page container */
-.page-content {
-  width: 100%;
-}
-
-/* ===============================
-   TABLET AND ABOVE
-   =============================== */
-@media (min-width: 768px) {
-  .page-Design {
-    padding: 90px var(--tablet-padding) 36px;
-  }
-
-  .page-content {
-    max-width: var(--tablet-max-width);
-  }
-}
-
-/* ===============================
-   LAPTOP AND ABOVE
-   =============================== */
-@media (min-width: 1024px) {
-  .page-content {
-    max-width: var(--tablet-max-width);
-  }
-}
-
-
-button,
-.btn {
-  font-size: 14px;
-  padding: 8px 14px;
-}
-
-@media (min-width: 768px) {
-  button,
-  .btn {
-    font-size: 15px;
-    padding: 10px 18px;
-  }
 }

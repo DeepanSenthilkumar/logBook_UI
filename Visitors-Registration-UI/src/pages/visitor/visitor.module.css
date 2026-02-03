@@ -16,22 +16,4 @@
 
 .formContainer {
     background-color: #F7FBFF;
-    /* row-gap: 16px; */
-}
-
-@media (min-width: 768px) {
-  .formContainer {
-    row-gap: 16px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .formContainer {
-    row-gap: 18px;
-  }
-}
-
-.submit-btn {
-  max-width: 220px;
-  width: 50%;
 }

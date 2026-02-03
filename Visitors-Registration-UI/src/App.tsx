@@ -10,17 +10,14 @@ function App() {
   return (
     <>
     <div className='page-Design'>
-      <div className="page-content">
-        <Navbar />
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/visitor" element={<Visitor />} />
-          {/* <Route path="/features" element={<Features />} /> */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/admin" element={<Admin />} />
-        </Routes>
-      </div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/visitor" element={<Visitor />} />
+        {/* <Route path="/features" element={<Features />} /> */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/admin" element={<Admin />} />
+      </Routes>
     </div>
     </>
   )
