@@ -3,19 +3,29 @@
 }
 
 .btn-admin-landing {
-    height: 71px;
-    width: 155px;
-    border-radius: 10px !important;
     background-color: #2F55A6CC !important;
     box-shadow: 4px 4px 8px rgba(54, 47, 47, 0.45);
     color: #F7FBFF !important;
 }
 
 .btn-visitor-landing {
-    height: 71px;
-    width: 155px;
-    border-radius: 10px !important;
     background-color: #ED1B24CC !important;
     box-shadow: 4px 4px 8px rgba(54, 47, 47, 0.45);
     color: #F7FBFF !important;
+}
+
+.btn-size {
+    height: 55px;
+    width: 120px;
+    font-size: 16px !important;
+    border-radius: 10px !important;
+}
+
+@media (min-width: 400px) {
+    .btn-size {
+        height: 60px;
+        width: 140px;
+        font-size: 18px !important;
+        border-radius: 10px !important;
+    }
 }

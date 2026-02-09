@@ -3,23 +3,57 @@
 * {
   font-family: 'Poppins' !important;
   color: #495057 !important;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
 }
 
 body {
   background-color: #f8f8f8;
+  overflow-x: hidden;
 }
+
+/* ---------- GLOBAL PAGE LAYOUT ---------- */
+
 .page-Design {
-  padding: 90px 16px 36px 16px;
-  min-height: 800px;
+  min-height: 100vh;
+  padding: 9.879253567508233vh 16px 3.951701427003293vh 16px;
+  display: flex;
+  flex-direction: column;
 }
 
-/* .container-box {
-  padding: 20px;
-} */
-
-button {
-  border-radius: 4px !important;
+/* area where routes render */
+.page-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding-top: 7.6vh;
 }
+
+/* tablet container wrapper */
+.page-container {
+  width: 100%;
+}
+
+.border-container {
+  border: none;
+}
+
+/* TABLET AND ABOVE */
+@media (min-width: 768px) {
+  .page-container {
+    max-width: 820px;
+    height: calc(100vh - 31.563117vh);
+    background-color: #ffffff;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+}
+
+/* ---------- BUTTON ---------- */
 
 .btn-danger {
   color: #FFFFFF !important;

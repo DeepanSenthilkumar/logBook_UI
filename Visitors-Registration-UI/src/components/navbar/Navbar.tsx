@@ -31,14 +31,14 @@ const Navbar = () => {
 
   return (
     <>
-    <header className='nav navbar-dark'>
-      <div>
+    <header className='nav-wrapper'>
+      <div className="nav">
        <img src={icon} className='icon-Container' alt="Icon" />
+       
+        {!hideMenu && options.length > 0 && (
+          <Menu options={options} onNavigate={navigate} />
+        )}
       </div>
-
-      {!hideMenu && options.length > 0 && (
-        <Menu options={options} onNavigate={navigate} />
-      )}
     </header>
     </>
   )
