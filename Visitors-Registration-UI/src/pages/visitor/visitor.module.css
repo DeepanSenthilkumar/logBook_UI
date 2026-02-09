@@ -16,4 +16,14 @@
 
 .formContainer {
     background-color: #F7FBFF;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+    .formContainer {
+        padding-right: 32px;
+        padding-left: 32px;
+        height: 421px;
+    }
 }

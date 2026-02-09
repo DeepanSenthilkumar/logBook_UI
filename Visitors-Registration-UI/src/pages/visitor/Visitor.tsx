@@ -75,7 +75,7 @@ function Visitor() {
               <textarea className={`form-control ${styles.purpose_Input}`} {...register("purpose", { required: true })} placeholder='Enter Purpose of Visit'/>
             </div>
 
-            <Button text='Submit' onClick={submitForm} variant='danger col-5 mx-auto submit-margin'></Button>
+            <Button text='Submit' onClick={submitForm} variant='danger btn-size col-5 mx-auto submit-margin'></Button>
 
           </div>
         </form>

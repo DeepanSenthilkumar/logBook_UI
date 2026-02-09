@@ -17,7 +17,14 @@
   justify-content: space-between;
 }
 
-/* stop growing after laptop */
+.home-layout {
+  margin-bottom: 7.6vh;
+}
+
+.other-layout {
+  margin-bottom: 0px;
+}
+
 @media (min-width: 1024px) {
   .nav {
     max-width: 1024px;

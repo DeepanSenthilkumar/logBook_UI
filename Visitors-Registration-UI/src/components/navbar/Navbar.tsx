@@ -31,7 +31,7 @@ const Navbar = () => {
 
   return (
     <>
-    <header className='nav-wrapper'>
+    <header className= {`nav-wrapper ${hideMenu ? 'home-layout' : 'other-layout'}`}>
       <div className="nav">
        <img src={icon} className='icon-Container' alt="Icon" />
        

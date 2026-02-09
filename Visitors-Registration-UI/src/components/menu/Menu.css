@@ -17,18 +17,41 @@
   border-radius: 12px;
   padding: 12px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  min-width: 160px;
+  min-width: 138px;
 }
+
+/* .menu-popup {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background: white;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  min-width: 142px;
+} */
 
 .menu-item {
   background: none;
   border: none;
-  padding: 10px;
+  padding: 8px;
   width: 100%;
   text-align: left;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .menu-item:hover {
   background-color: #f1f1f1;
+}
+
+@media (min-width: 768px) {
+  .menu-popup {
+    min-width: 160px;
+  }
+
+  .menu-item {
+    padding: 10px;
+    font-size: 16px;
+  }
 }
