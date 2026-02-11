@@ -2,8 +2,8 @@ import { useState } from 'react';
 import {useForm} from "react-hook-form"
 import Button from '../../components/buttons/buttons'
 import '../../index.css'
-// import './visitor.css'
 import styles from './visitor.module.css'
+import api from '../../service/api.service.ts'
 
 type FormValues = {
   firstName: string;
@@ -14,10 +14,11 @@ type FormValues = {
 
 const SuccessPage = () => {
   return (
-    <div style={{ height: "100vh", backgroundColor: "transparent", display: "flex", justifyContent: "center", alignItems: "center", }} >
-      <button style={{ backgroundColor: "red", color: "black", padding: "12px 24px", border: "none", cursor: "pointer" }} >
-        Continue
-      </button>
+    <div className={`${styles.successPage_layout}`} >
+      <div className= {`${styles.successPage_secondaryLayout}`}>
+        <p className={styles.message}>Thanks for visiting iCodex.<span> Have a nice day.</span></p>
+        <Button text='Back'to="/" variant='danger btn-size col-5 mx-auto submit-margin'></Button>
+      </div>
     </div>
   );
 };
@@ -28,20 +29,65 @@ function Visitor() {
   } = useForm<FormValues>();
 
   const [isSuccess, setIsSuccess] = useState(false);
+
+  const formatTime12 = (d: Date): string => {
+    let hours = d.getHours();
+    const minutes = d.getMinutes().toString().padStart(2, '0');
+    const seconds = d.getSeconds().toString().padStart(2, '0');
+
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12 || 12;
+
+    return `${hours.toString().padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
+  };
+
+  const formatDate = (d: Date): string => {
+    const y = d.getFullYear();
+    const m = (d.getMonth() + 1).toString().padStart(2, '0');
+    const day = d.getDate().toString().padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  };
   
   const submitForm = async () => {
-    debugger
+    // debugger
     const isValid = await trigger();
 
     if (!isValid) {
       return;
     }
-
     const data = getValues();
-
     console.log("Collected form data:", data);
-    reset();
-    setIsSuccess(true);
+    
+    try {
+      const now = new Date();
+      const inTimeDate = new Date(now);
+      const outTimeDate = new Date(now.getTime() + 2 * 60 * 60 * 1000); // +2 hrs safely
+
+      const requestBody = {
+        "firstName": data.firstName,
+        "lastName": data.lastName,
+        "mobileNumber": data.mobile,
+        "purposeOfVisit": data.purpose,
+        "date": formatDate(now),
+        "inTime": formatTime12(inTimeDate),
+        "outTime": formatTime12(outTimeDate)
+      } 
+
+      console.log('requestBody', requestBody);
+      const res = (await api.addVisitor(requestBody)) as any;
+      console.log(res);
+      if (res.isAdded) {
+        setIsSuccess(true);
+        reset({
+            firstName: "",
+            lastName: "",
+            mobile: undefined,
+            purpose: ""
+          });
+        }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   if (isSuccess) {

@@ -20,7 +20,39 @@
     border-radius: 10px;
 }
 
+.successPage_layout {
+    height: 77vh;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.successPage_secondaryLayout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .message {
+
+} */
+
+.message span {
+    display: block;
+    justify-self: center;
+}
+
 @media (min-width: 768px) {
+    .message span {
+      display: inline;
+    }
+
+    .message {
+        font-size: 24px;
+    }
+
     .formContainer {
         padding-right: 32px;
         padding-left: 32px;
