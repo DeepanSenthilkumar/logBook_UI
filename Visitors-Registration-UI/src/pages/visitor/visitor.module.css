@@ -58,4 +58,8 @@
         padding-left: 32px;
         height: 421px;
     }
+
+    .visitor h2 {
+        justify-self: center;
+    }
 }

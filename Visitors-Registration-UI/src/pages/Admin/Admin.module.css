@@ -7,3 +7,39 @@
 .Admin table {
     border-radius: 12px;
 }
+
+.buttonRow {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.editCard {
+  border-radius: 12px;
+  background: #fff;
+}
+
+.fieldGap{
+    row-gap: 16px;
+}
+
+.inputDiv {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.formLable {
+    margin-right: 10px;
+}
+
+.fieldWidth {
+    width: 120px;
+}
+
+@media (min-width: 426px) {
+    .formLable {
+        margin-right: 10px;
+    }
+}

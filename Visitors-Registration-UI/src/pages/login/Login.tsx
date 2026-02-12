@@ -40,7 +40,7 @@ function Login() {
         <h2> Welcome to iCodex. Please signIn to access log </h2>
 
         <form>
-          <div className={`row g-3 py-3 ${styles.formContainer}`}>
+          <div className={`row g-3 py-3 shadow-sm ${styles.formContainer}`}>
             <div className="col-12">
               <label className="form-label">User Id</label>
               <input type="text" className="form-control" placeholder='Enter User Id'{...register("userId", { required: "User Id is required" })}/>

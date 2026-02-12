@@ -8,9 +8,10 @@ type ButtonProps = {
   text: string
   to?: string
   onClick?: () => void
+  disabled?: boolean  
 }
 
-const Button = ({ variant = 'primary', text, onClick, to }: ButtonProps) => {
+const Button = ({ variant = 'primary', text, onClick, to, disabled = false }: ButtonProps) => {
     const navigate = useNavigate();
     const handleClick = () => {
         if(to) {
@@ -20,7 +21,7 @@ const Button = ({ variant = 'primary', text, onClick, to }: ButtonProps) => {
         }
     }
   return (
-    <button type="button" className={`btn btn-${variant} btn-lg`} onClick={handleClick}>
+    <button type="button" className={`btn btn-${variant} btn-lg`} onClick={handleClick} disabled={disabled}>
       {text}
     </button>
   )

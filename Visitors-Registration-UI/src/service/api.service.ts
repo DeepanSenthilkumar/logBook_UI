@@ -34,12 +34,12 @@ const api = {
     return request("api/visitors/add", "POST", data);
   },
 
-  getVisitors() {
-    return request("api/visitors", "GET");
+  getVisitors(data: any) {
+    return request("api/visitors/getVisitorList", "POST", data);
   },
 
-  deleteVisitor(id: string) {
-    return request(`api/visitors/${id}`, "DELETE");
+  updateTimeById(id: string, data: any) {
+    return request(`api/visitors/outTime/${id}`, "PUT", data);
   },
 
   /* ---------- FUTURE EXPANSION ---------- */

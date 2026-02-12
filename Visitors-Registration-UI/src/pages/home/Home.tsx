@@ -4,7 +4,7 @@ import Button from '../../components/buttons/buttons.tsx'
 const Home = () => {
   return (
     <>
-    <div className='container-class d-flex flex-column gap-3'>
+    <div className='container-class shadow-sm d-flex flex-column gap-3'>
       {/* <div className='border-container'> */}
         <div className='header-container'>
           <p className='header-text'>ICODEX PUBLISHING SOLUTIONS</p>

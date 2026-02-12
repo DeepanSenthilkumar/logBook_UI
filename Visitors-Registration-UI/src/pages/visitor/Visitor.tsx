@@ -100,7 +100,7 @@ function Visitor() {
         <h2> Welcome to iCodex. Please Enter your details </h2>
 
         <form>
-          <div className={`row g-3 py-3 ${styles.formContainer}`}>
+          <div className={`row g-3 py-3 shadow-sm ${styles.formContainer}`}>
             <div className="col-12 col-md-6">
               <label className="form-label">First Name</label>
               <input type="text" className="form-control" {...register("firstName", { required: true })} placeholder='Enter First Name'/>
