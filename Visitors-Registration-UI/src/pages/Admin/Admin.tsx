@@ -4,6 +4,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import styles from './Admin.module.css'
 import api from '../../service/api.service.ts'
 import Button from "../../components/buttons/buttons.tsx";
+import { showSuccess } from "../../components/toaster/toaster";
 // import { useAuth } from "../../context/AuthContext.tsx";
 
 const pageSize = 10;
@@ -49,7 +50,6 @@ function Admin() {
   // }, [selectedVisitor]);
 
   const getVisitors = async () => {
-    debugger
     try {
       const requestBody = {
         pageNumber: currentPage,
@@ -61,7 +61,6 @@ function Admin() {
       const res = (await api.getVisitors(requestBody)) as any;
       console.log(res);
       if (res) {
-        debugger
         setPaginatedData(res.data ?? []) 
         setTotalPages(res?.totalPages?? 1);
       }
@@ -113,6 +112,7 @@ function Admin() {
 
       const response = (await api.updateTimeById(selectedVisitor.visitorId, requestBody)) as any;
       if (response.updated) {
+        showSuccess("OutTime Updated");
         getVisitors();
         cancelEdit();
       }

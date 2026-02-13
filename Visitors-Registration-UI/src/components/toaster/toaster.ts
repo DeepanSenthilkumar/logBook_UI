@@ -11,3 +11,7 @@ export const showError = (msg: string) => {
 export const showInfo = (msg: string) => {
   toast(msg);
 };
+
+export const showWarning = (msg: string) => {
+    toast(msg, { icon: "⚠️", });
+}

@@ -4,7 +4,8 @@ import Button from '../../components/buttons/buttons';
 import '../../index.css'
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import styles from './login.module.css'
+import styles from './login.module.css';
+import { showSuccess, showError } from "../../components/toaster/toaster";
 
 type LoginFormValues = {
   userId: string;
@@ -41,10 +42,11 @@ function Login() {
     console.log("Login Request Body:", requestBody);
     if ( data.userId === userId && data.password === password ) {
       // localStorage.setItem("auth", JSON.stringify(userData));
+      showSuccess("Login Success")
       login();
       navigate("/admin");
     } else {
-      alert("Invalid credentials");
+      showError("Invalid Credentials");
     }
   };
 
