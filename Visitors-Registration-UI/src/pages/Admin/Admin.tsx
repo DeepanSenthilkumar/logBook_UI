@@ -4,6 +4,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import styles from './Admin.module.css'
 import api from '../../service/api.service.ts'
 import Button from "../../components/buttons/buttons.tsx";
+// import { useAuth } from "../../context/AuthContext.tsx";
 
 const pageSize = 10;
 

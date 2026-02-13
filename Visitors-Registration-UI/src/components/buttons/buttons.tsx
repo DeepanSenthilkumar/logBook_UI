@@ -16,7 +16,9 @@ const Button = ({ variant = 'primary', text, onClick, to, disabled = false }: Bu
     const handleClick = () => {
         if(to) {
             navigate(to)
-        } else if (onClick) {
+        }
+        
+        if (onClick) {
             onClick()
         }
     }

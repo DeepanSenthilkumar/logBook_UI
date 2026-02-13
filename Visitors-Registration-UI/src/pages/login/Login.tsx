@@ -2,6 +2,8 @@
 import {useForm} from "react-hook-form"
 import Button from '../../components/buttons/buttons';
 import '../../index.css'
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 import styles from './login.module.css'
 
 type LoginFormValues = {
@@ -10,6 +12,11 @@ type LoginFormValues = {
 };
 
 function Login() {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const userId = 'User1';
+  const password = 'IcodexAdmin@07'
   const {
     register,
     trigger,
@@ -32,6 +39,13 @@ function Login() {
     };
 
     console.log("Login Request Body:", requestBody);
+    if ( data.userId === userId && data.password === password ) {
+      // localStorage.setItem("auth", JSON.stringify(userData));
+      login();
+      navigate("/admin");
+    } else {
+      alert("Invalid credentials");
+    }
   };
 
   return (

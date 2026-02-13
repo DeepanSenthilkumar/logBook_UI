@@ -3,7 +3,8 @@ import './Menu.css'
 
 type MenuOption = {
   label: string;
-  path: string;
+  path?: string;
+  action?: () => void; 
 };
 
 type Props = {
@@ -25,6 +26,17 @@ const Menu = ({ options, onNavigate }: Props) => {
     return () => document.removeEventListener("click", close);
   }, []);
 
+  // function which navigate or logout
+  const handleClick = (opt: MenuOption) => {
+    if (opt.action) {
+      opt.action();
+    } if (opt.path) {
+      onNavigate(opt.path);
+    }
+
+    setOpen(false);
+  };
+
   return (
     <div ref={ref} className="menu-wrapper">
       <button className="dots-btn" onClick={() => setOpen(prev => !prev)}>
@@ -34,7 +46,7 @@ const Menu = ({ options, onNavigate }: Props) => {
       {open && (
         <div className="menu-popup">
           {options.map(opt => (
-            <button key={opt.path} className="menu-item" onClick={() => { onNavigate(opt.path); setOpen(false); }}>
+            <button key={opt.path} className="menu-item" onClick={ () => handleClick(opt) }>
               {opt.label}
             </button>
           ))}

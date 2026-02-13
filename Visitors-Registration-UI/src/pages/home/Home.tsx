@@ -1,7 +1,12 @@
 import './Home.css'
 import Button from '../../components/buttons/buttons.tsx'
+import { showSuccess, showError } from "../../components/toaster/toaster";
 
 const Home = () => {
+  const buttonTest = () => {
+    showSuccess("Updated successfully");
+  }
+
   return (
     <>
     <div className='container-class shadow-sm d-flex flex-column gap-3'>
@@ -13,7 +18,7 @@ const Home = () => {
         </div>
 
         <div className='button-row'>
-          <Button variant='admin-landing btn-size' text='Admin' to='/login'></Button>
+          <Button variant='admin-landing btn-size' text='Admin' onClick={() => buttonTest()} to='/login'></Button>
           <Button variant='visitor-landing btn-size' text='Visitor' to='/visitor'></Button>
         </div>
 
