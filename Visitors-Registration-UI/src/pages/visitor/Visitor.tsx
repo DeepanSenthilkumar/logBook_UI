@@ -5,6 +5,7 @@ import '../../index.css'
 import styles from './visitor.module.css'
 import api from '../../service/api.service.ts'
 import { useLoader } from '../../components/loader/LoaderContext.tsx';
+import { error, success, warning } from '../../components/toaster/toaster.tsx';
 
 type FormValues = {
   firstName: string;
@@ -32,7 +33,7 @@ function Visitor() {
 
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const formatTime12 = (d: Date): string => {
+  const formatTime12 = (d: Date, field: string): string => {
     let hours = d.getHours();
     const minutes = d.getMinutes().toString().padStart(2, '0');
     const seconds = d.getSeconds().toString().padStart(2, '0');
@@ -40,7 +41,11 @@ function Visitor() {
     const ampm = hours >= 12 ? 'PM' : 'AM';
     hours = hours % 12 || 12;
 
-    return `${hours.toString().padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
+    if(field === 'in') {
+      return `${hours.toString().padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
+    } else {
+      return `${hours.toString().padStart(2, '0')}:${minutes} ${ampm}`;
+    }
   };
 
   const formatDate = (d: Date): string => {
@@ -56,6 +61,7 @@ function Visitor() {
     const isValid = await trigger();
 
     if (!isValid) {
+      warning('Please fill all details');
       hideLoader();
       return;
     }
@@ -73,8 +79,8 @@ function Visitor() {
         "mobileNumber": data.mobile,
         "purposeOfVisit": data.purpose,
         "date": formatDate(now),
-        "inTime": formatTime12(inTimeDate),
-        "outTime": formatTime12(outTimeDate)
+        "inTime": formatTime12(inTimeDate, 'in'),
+        "outTime": formatTime12(outTimeDate, 'out')
       } 
 
       console.log('requestBody', requestBody);
@@ -90,8 +96,10 @@ function Visitor() {
           });
         }
         hideLoader();
-    } catch (err) {
-      hideLoader();
+        success("Data Saved")
+      } catch (err) {
+        hideLoader();
+        error('Unexpected error. Please try again');
       console.error(err);
     }
   };

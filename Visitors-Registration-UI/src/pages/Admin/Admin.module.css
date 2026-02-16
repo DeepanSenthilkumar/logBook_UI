@@ -38,6 +38,31 @@
     width: 120px;
 }
 
+.editBtn {
+  background-color: #e7f1ff !important;     /* very mild blue */
+  border: 1px solid #cfe2ff !important;
+  padding: 4px 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+/* icon color = hover background shade when NOT hovered */
+.editIcon {
+  color: #0d6efd !important;
+  transition: color 0.2s ease !important;
+}
+
+/* hover state */
+.editBtn:hover {
+  background-color: #0d6efd !important;     /* stronger mild blue */
+  border-color: #0d6efd !important;
+}
+
+/* icon turns white on hover */
+.editBtn:hover .editIcon {
+  color: #ffffff !important;
+}
+
+
 @media (min-width: 426px) {
     .formLable {
         margin-right: 10px;

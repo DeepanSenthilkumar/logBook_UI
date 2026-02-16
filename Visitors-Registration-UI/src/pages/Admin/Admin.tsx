@@ -6,7 +6,6 @@ import api from '../../service/api.service.ts'
 import Button from "../../components/buttons/buttons.tsx";
 import { success } from "../../components/toaster/toaster";
 import { useLoader } from "../../components/loader/LoaderContext.tsx";
-// import { useAuth } from "../../context/AuthContext.tsx";
 
 const pageSize = 10;
 
@@ -19,7 +18,6 @@ function Admin() {
   const [totalPages, setTotalPages] = useState(1);
   const [isEditMode, setIsEditMode] = useState(false);
   const [selectedVisitor, setSelectedVisitor] = useState<any>(null);
-  // const [visitors, setVisitors] = useState<any>({ data: [], totalPages: 0, totalRecords: 0, pageNumber: 1, pageSize: 10 });
   const [paginatedData, setPaginatedData] = useState<any[]>([]);
   const [editedOutTime, setEditedOutTime] = useState("");
   const [originalOutTime, setOriginalOutTime] = useState("");
@@ -42,14 +40,6 @@ function Admin() {
       getVisitors();
     }
   }, [currentPage, debouncedSearch, dateFilter]);
-
-  // useEffect(() => {
-  //   if (selectedVisitor) {
-  //     const val = selectedVisitor.outTime || "";
-  //     setEditedOutTime(val);
-  //     setOriginalOutTime(val);
-  //   }
-  // }, [selectedVisitor]);
 
   const getVisitors = async () => {
     showLoader();
@@ -178,8 +168,8 @@ function Admin() {
                     <td>{r.purposeOfVisit}</td>
                     <td>{r.mobileNumber}</td>
                     <td>
-                      <button className="btn btn-sm btn-outline-secondary" onClick={() => changeToEdit(r)}>
-                        <EditIcon fontSize="small" />
+                      <button className={`btn btn-sm ${styles.editBtn}`} onClick={() => changeToEdit(r)}>
+                        <EditIcon fontSize="small" className={`${styles.editIcon}`}/>
                       </button>
                     </td>
                   </tr>

@@ -40,21 +40,11 @@ export const error = (message: string, title = "Error") => {
 export const warning = (message: string, title = "Warning") => {
   console.log("WARNING:", message);
 
-  toast(buildContent(title, message), {
-    icon: "⚠️",
-    style: {
-      borderLeft: "6px solid #dc3545",
-    },
-  });
+  toast(buildContent(title, message), { icon: "⚠️", style: { borderLeft: "6px solid #ecce20",}, });
 };
 
 export const info = (message: string, title = "Info") => {
   console.log("INFO:", message);
 
-  toast(buildContent(title, message), {
-    icon: "ℹ️",
-    style: {
-      borderLeft: "6px solid #0d6efd",
-    },
-  });
+  toast(buildContent(title, message), { icon: "ℹ️", style: { borderLeft: "6px solid #0d6efd", }, });
 };
