@@ -7,6 +7,7 @@ import Login from './pages/login/Login.tsx'
 import Admin from './pages/Admin/Admin.tsx'
 import ProtectedRoute from './routes/ProtectedRoute.tsx'
 import { Toaster } from 'react-hot-toast'
+import { LoaderProvider } from './components/loader/LoaderContext.tsx';
 
 function App() {
   return (
@@ -18,20 +19,22 @@ function App() {
       }}
     />
 
-    <div className='page-Design'>
-      <Navbar />
-      <div className="page-content">
-        <div className="page-container"> 
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/visitor" element={<Visitor />} />
-            {/* <Route path="/features" element={<Features />} /> */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
-          </Routes>
+    <LoaderProvider>
+      <div className='page-Design'>
+        <Navbar />
+        <div className="page-content">
+          <div className="page-container"> 
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/visitor" element={<Visitor />} />
+              {/* <Route path="/features" element={<Features />} /> */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
+            </Routes>
+          </div>
         </div>
       </div>
-    </div>
+    </LoaderProvider>
     </>
   )
 }

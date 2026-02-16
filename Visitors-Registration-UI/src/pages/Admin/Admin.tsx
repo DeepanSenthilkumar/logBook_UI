@@ -4,12 +4,14 @@ import EditIcon from "@mui/icons-material/Edit";
 import styles from './Admin.module.css'
 import api from '../../service/api.service.ts'
 import Button from "../../components/buttons/buttons.tsx";
-import { showSuccess } from "../../components/toaster/toaster";
+import { success } from "../../components/toaster/toaster";
+import { useLoader } from "../../components/loader/LoaderContext.tsx";
 // import { useAuth } from "../../context/AuthContext.tsx";
 
 const pageSize = 10;
 
 function Admin() {
+  const { showLoader, hideLoader } = useLoader();
   const [searchText, setSearchText] = useState("");
   const [dateFilter, setDateFilter] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
@@ -50,6 +52,7 @@ function Admin() {
   // }, [selectedVisitor]);
 
   const getVisitors = async () => {
+    showLoader();
     try {
       const requestBody = {
         pageNumber: currentPage,
@@ -63,9 +66,11 @@ function Admin() {
       if (res) {
         setPaginatedData(res.data ?? []) 
         setTotalPages(res?.totalPages?? 1);
+        hideLoader();
       }
     } catch (err) {
       console.error("Fetch failed:", err);
+      hideLoader();
     }
   };
 
@@ -105,6 +110,7 @@ function Admin() {
   }
 
   const updateOutTime = async() => {
+    showLoader(); 
     try {
       const requestBody = {
         "outTime": editedOutTime
@@ -112,11 +118,12 @@ function Admin() {
 
       const response = (await api.updateTimeById(selectedVisitor.visitorId, requestBody)) as any;
       if (response.updated) {
-        showSuccess("OutTime Updated");
+        success("OutTime Updated");
         getVisitors();
         cancelEdit();
       }
     } catch (err) {
+      hideLoader();
       console.log(err);
     }
   }
@@ -156,6 +163,7 @@ function Admin() {
                 <th>In</th>
                 <th>Out</th>
                 <th>Purpose</th>
+                <th>Mobile No</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -168,6 +176,7 @@ function Admin() {
                     <td>{r.inTime}</td>
                     <td>{r.outTime || "-"}</td>
                     <td>{r.purposeOfVisit}</td>
+                    <td>{r.mobileNumber}</td>
                     <td>
                       <button className="btn btn-sm btn-outline-secondary" onClick={() => changeToEdit(r)}>
                         <EditIcon fontSize="small" />

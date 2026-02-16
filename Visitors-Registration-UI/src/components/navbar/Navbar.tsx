@@ -4,7 +4,7 @@ import '../../index.css'
 import Menu from '../menu/Menu'
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from '../../context/AuthContext';
-import { showInfo } from '../toaster/toaster';
+import { info } from '../toaster/toaster';
 
 type MenuOption = {
   label: string;
@@ -24,7 +24,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
-    showInfo("Logged Out, Visit Again")
+    info("Visit Again", "Logged Out");
     navigate("/login");
   };
 

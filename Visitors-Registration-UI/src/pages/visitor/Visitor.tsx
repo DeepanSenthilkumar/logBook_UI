@@ -4,6 +4,7 @@ import Button from '../../components/buttons/buttons'
 import '../../index.css'
 import styles from './visitor.module.css'
 import api from '../../service/api.service.ts'
+import { useLoader } from '../../components/loader/LoaderContext.tsx';
 
 type FormValues = {
   firstName: string;
@@ -24,6 +25,7 @@ const SuccessPage = () => {
 };
 
 function Visitor() {
+  const { showLoader, hideLoader } = useLoader();
   const { register, trigger, getValues, reset
     // handleSubmit, // formState: { errors }
   } = useForm<FormValues>();
@@ -50,9 +52,11 @@ function Visitor() {
   
   const submitForm = async () => {
     // debugger
+    showLoader();
     const isValid = await trigger();
 
     if (!isValid) {
+      hideLoader();
       return;
     }
     const data = getValues();
@@ -85,7 +89,9 @@ function Visitor() {
             purpose: ""
           });
         }
+        hideLoader();
     } catch (err) {
+      hideLoader();
       console.error(err);
     }
   };

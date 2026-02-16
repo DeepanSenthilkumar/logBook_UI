@@ -58,3 +58,20 @@ body {
 .btn-danger {
   color: #FFFFFF !important;
 }
+
+.dual-spinner {
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 0.35em solid rgba(0,0,0,0.08);
+  border-top-color: #2F55A6CC;
+  border-bottom-color: #ED1B24CC;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  justify-self: center;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
