@@ -46,7 +46,7 @@ body {
 @media (min-width: 768px) {
   .page-container {
     max-width: 820px;
-    height: calc(100vh - 13.563117vh);
+    min-height: calc(100vh - 13.563117vh);
     background-color: #ffffff;
     overflow: hidden;
     margin: 0 auto;

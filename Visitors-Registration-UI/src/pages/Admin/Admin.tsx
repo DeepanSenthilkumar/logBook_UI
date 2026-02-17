@@ -144,7 +144,7 @@ function Admin() {
         </div>
 
         <div className="overflow-auto mb-3">
-          <table className="table table-bordered align-middle mb-0" style={{ minWidth: 700 }} >
+          <table className="table table-bordered align-middle mb-0" style={{ minWidth: 796 }} >
             <thead className="table-light">
               <tr>
                 <th>#</th>
@@ -162,7 +162,7 @@ function Admin() {
                   <tr key={r._id}>
                     <td>{r.filterCount}</td>
                     <td>{r.firstName} {r.lastName}</td>
-                    <td>{r.visitDate?.split("T")[0]}</td>
+                    <td className={`${styles.dateTh}`}>{r.visitDate?.split("T")[0]}</td>
                     <td>{r.inTime}</td>
                     <td>{r.outTime || "-"}</td>
                     <td>{r.purposeOfVisit}</td>
