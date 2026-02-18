@@ -56,7 +56,7 @@
     .formContainer {
         padding-right: 32px;
         padding-left: 32px;
-        height: 421px;
+        min-height: 421px;
     }
 
     .visitor h2 {
