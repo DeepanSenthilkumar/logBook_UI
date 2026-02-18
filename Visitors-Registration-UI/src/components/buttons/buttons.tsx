@@ -1,9 +1,7 @@
 import { useNavigate } from "react-router-dom"
-// import '../index.css'
 import './buttons.css'
 
 type ButtonProps = {
-  // variant?: 'primary' | 'secondary' | 'danger' | 'outline-dark'
   variant?: string
   text: string
   to?: string

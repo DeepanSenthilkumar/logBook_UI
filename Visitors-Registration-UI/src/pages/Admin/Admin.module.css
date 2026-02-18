@@ -39,7 +39,7 @@
 }
 
 .editBtn {
-  background-color: #e7f1ff !important;     /* very mild blue */
+  background-color: #e7f1ff !important;
   border: 1px solid #cfe2ff !important;
   padding: 4px 8px !important;
   transition: all 0.2s ease !important;
@@ -53,7 +53,7 @@
 
 /* hover state */
 .editBtn:hover {
-  background-color: #0d6efd !important;     /* stronger mild blue */
+  background-color: #0d6efd !important;
   border-color: #0d6efd !important;
 }
 

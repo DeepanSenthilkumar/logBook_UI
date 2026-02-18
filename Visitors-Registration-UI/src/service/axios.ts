@@ -1,6 +1,5 @@
 import axios from "axios";
 import { ENV } from "../config/env";
-// import { error } from "../../components/toaster/toaster";
 import { error as showError } from "../components/toaster/toaster";
 import { triggerLogout } from "../context/AuthContext";
 
@@ -26,24 +25,14 @@ http.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-/*
-  RESPONSE INTERCEPTOR
-  Runs after EVERY response
-  Handles expiry + auto logout
-*/
 http.interceptors.response.use(
   (response) => response.data,
   (error) => {
     const status = error?.response?.status;
 
-    // Token expired / invalid
     if (status === 401) {
       showError('Session Expired');
-    //   sessionStorage.removeItem("token");
-
-    //   // force logout + redirect
-    //   window.location.href = "/login";
-    triggerLogout();
+      triggerLogout();
     }
 
     return Promise.reject(error);

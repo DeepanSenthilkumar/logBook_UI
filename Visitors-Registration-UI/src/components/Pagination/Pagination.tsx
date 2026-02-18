@@ -1,6 +1,5 @@
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-// import style from './Pagination.module.css'
 
 interface AppPaginationProps {
   page: number;

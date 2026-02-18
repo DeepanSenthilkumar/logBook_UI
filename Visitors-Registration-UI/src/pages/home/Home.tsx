@@ -6,7 +6,6 @@ const Home = () => {
   return (
     <>
     <div className='container-class shadow-sm d-flex flex-column gap-3'>
-      {/* <div className='border-container'> */}
         <div className='header-container'>
           <p className='header-text'>ICODEX PUBLISHING SOLUTIONS</p>
 
@@ -26,7 +25,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-    {/* </div> */}
     </>
   )
 }
