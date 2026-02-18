@@ -59,7 +59,7 @@ function Login() {
           <div className={`row g-3 py-3 shadow-sm ${styles.formContainer}`}>
             <div className="col-12">
               <label className="form-label">User Id</label>
-              <input type="text" className="form-control" placeholder='Enter User Id'{...register("userId", { required: "User Id is required" })}/>
+              <input type="text" className={`form-control ${errors.userId ? "is-invalid" : ""}`} placeholder='Enter User Id'{...register("userId", { required: "User Id is required" })}/>
                
                {errors.userId && (
                 <small className="text-danger">{errors.userId.message}</small>
@@ -68,7 +68,7 @@ function Login() {
 
             <div className="col-12">
               <label className="form-label">Password</label>
-              <input type="password" className="form-control" placeholder='Enter Password '{...register("password", { required: "Password is required",
+              <input type="password" className={`form-control ${errors.password ? "is-invalid" : ""}`} placeholder='Enter Password '{...register("password", { required: "Password is required",
                 pattern: { value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])(?!.*\s).+$/, message: "Must contain uppercase, lowercase, special character, no spaces"}})}/>
                 
                 {errors.password && (

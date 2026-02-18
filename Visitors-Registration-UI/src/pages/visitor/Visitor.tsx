@@ -10,7 +10,7 @@ import { error, success, warning } from '../../components/toaster/toaster.tsx';
 type FormValues = {
   firstName: string;
   lastName: string;
-  mobile: number;
+  mobile: string;
   purpose: string;
 };
 
@@ -27,9 +27,9 @@ const SuccessPage = () => {
 
 function Visitor() {
   const { showLoader, hideLoader } = useLoader();
-  const { register, trigger, getValues, reset
+  const { register, trigger, getValues, reset, formState: { errors }
     // handleSubmit, // formState: { errors }
-  } = useForm<FormValues>();
+  } = useForm<FormValues>({mode: "onSubmit", reValidateMode: "onChange"});
 
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -117,22 +117,41 @@ function Visitor() {
           <div className={`row g-3 py-3 shadow-sm ${styles.formContainer}`}>
             <div className="col-12 col-md-6">
               <label className="form-label">First Name</label>
-              <input type="text" className="form-control" {...register("firstName", { required: true })} placeholder='Enter First Name'/>
+              <input type="text" className={`form-control ${errors.firstName ? "is-invalid" : ""}`}
+               {...register("firstName", { required: "First name is required" })} placeholder='Enter First Name'/>
+
+              {errors.firstName && (
+                <small className="text-danger">{errors.firstName.message}</small>)
+              }
             </div>
 
             <div className="col-12 col-md-6">
               <label className="form-label">Last Name</label>
-              <input type="text" className="form-control" {...register("lastName", { required: true })} placeholder='Enter Last Name'/>
+              <input type="text" className={`form-control ${errors.lastName ? "is-invalid" : ""}`}
+               {...register("lastName", { required: "Last name is required" })} placeholder='Enter Last Name'/>
+
+              {errors.lastName && (
+                <small className="text-danger">{errors.lastName.message}</small>
+              )}
             </div>
 
             <div className="col-12">
               <label className="form-label">Mobile Number</label>
-              <input type="text" className="form-control" {...register("mobile", { required: true, minLength: 10, pattern: /^\d+$/ })} placeholder='Enter Mobile Number'/>
+              <input type="text" className={`form-control ${errors.mobile ? "is-invalid" : ""}`} {...register("mobile", { required: "Mobile number is required", 
+                pattern: { value: /^[0-9]{10}$/, message: "Enter a valid 10 digit mobile number" }})} placeholder='Enter Mobile Number'/>
+                {errors.mobile && (
+                  <small className="text-danger">{errors.mobile.message}</small>
+                )}
             </div>
 
             <div className="col-12">
               <label className="form-label">Purpose of Visit</label>
-              <textarea className={`form-control ${styles.purpose_Input}`} {...register("purpose", { required: true })} placeholder='Enter Purpose of Visit'/>
+              <textarea className={`form-control ${styles.purpose_Input} ${errors.purpose ? "is-invalid" : ""}`} 
+              {...register("purpose", { required: 'Purpose is required' })} placeholder='Enter Purpose of Visit'/>
+
+              {errors.purpose && (
+                <small className="text-danger">{errors.purpose.message}</small>
+              )}
             </div>
 
             <Button text='Submit' onClick={submitForm} variant='danger btn-size col-5 mx-auto submit-margin'></Button>

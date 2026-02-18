@@ -70,6 +70,10 @@ body {
   justify-self: center;
 }
 
+.form-control.is-invalid {
+  background-image: none !important;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
