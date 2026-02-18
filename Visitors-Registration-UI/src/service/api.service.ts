@@ -1,27 +1,28 @@
-import { ENV } from "../config/env";
+// import { ENV } from "../config/env";
+import http from "./axios";
 
-type Method = "GET" | "POST" | "PUT" | "DELETE";
+// type Method = "GET" | "POST" | "PUT" | "DELETE";
 
-async function request<T>(
-  endpoint: string,
-  method: Method,
-  body?: any
-): Promise<T> {
-  const response = await fetch(`${ENV.BASE_URL}${endpoint}`, {
-    method,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: body ? JSON.stringify(body) : undefined,
-  });
+// async function request<T>(
+//   endpoint: string,
+//   method: Method,
+//   body?: any
+// ): Promise<T> {
+//   const response = await fetch(`${ENV.BASE_URL}${endpoint}`, {
+//     method,
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: body ? JSON.stringify(body) : undefined,
+//   });
 
-  if (!response.ok) {
-    const text = await response.text();
-    throw new Error(text || "API request failed");
-  }
+//   if (!response.ok) {
+//     const text = await response.text();
+//     throw new Error(text || "API request failed");
+//   }
 
-  return response.json();
-}
+//   return response.json();
+// }
 
 /* =========================
    ALL APIs WRAPPED IN ONE OBJECT
@@ -31,15 +32,23 @@ const api = {
   /* ---------- VISITOR ---------- */
 
   addVisitor(data: any) {
-    return request("api/visitors/add", "POST", data);
+    return http.post("api/visitors/add", data);
+  },
+  
+  validateUser(data: any) {
+    return http.post("api/auth/login", data);
+  },
+
+  logoutUser() {
+    return http.post("api/auth/logout");
   },
 
   getVisitors(data: any) {
-    return request("api/visitors/getVisitorList", "POST", data);
+    return http.post("api/visitors/getVisitorList", data);
   },
 
   updateTimeById(id: string, data: any) {
-    return request(`api/visitors/outTime/${id}`, "PUT", data);
+    return http.put(`api/visitors/outTime/${id}`, data);
   },
 
   /* ---------- FUTURE EXPANSION ---------- */

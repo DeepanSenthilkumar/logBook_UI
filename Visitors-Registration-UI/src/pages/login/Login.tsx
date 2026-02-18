@@ -6,6 +6,8 @@ import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import styles from './login.module.css';
 import { success, error } from "../../components/toaster/toaster";
+import api from '../../service/api.service.ts'
+import { useLoader } from "../../components/loader/LoaderContext.tsx";
 
 type LoginFormValues = {
   userId: string;
@@ -13,11 +15,10 @@ type LoginFormValues = {
 };
 
 function Login() {
+  const { showLoader, hideLoader } = useLoader();
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const userId = 'User1';
-  const password = 'IcodexAdmin@07'
   const {
     register,
     trigger,
@@ -27,10 +28,12 @@ function Login() {
 
   const submitLogin = async () => {
     const isValid = await trigger();
+    sessionStorage.removeItem("token");
 
     if (!isValid) {
       return;
     }
+    showLoader();
 
     const data = getValues();
 
@@ -40,13 +43,15 @@ function Login() {
     };
 
     console.log("Login Request Body:", requestBody);
-    if ( data.userId === userId && data.password === password ) {
-      // localStorage.setItem("auth", JSON.stringify(userData));
+    const response = (await api.validateUser(requestBody)) as any;
+    debugger
+    if (response.isAdded) {
       success("Login Success")
-      login();
+      login(response.jwtToken);
       navigate("/admin");
     } else {
       error("Invalid Credentials");
+      hideLoader();
     }
   };
 
