@@ -17,6 +17,7 @@ const api = {
   
   /* ---------- Login ---------- */
   validateUser(data: any) {
+    debugger
     return http.post("api/auth/login", data);
   },
 

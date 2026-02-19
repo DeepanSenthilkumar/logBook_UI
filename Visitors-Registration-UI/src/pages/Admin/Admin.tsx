@@ -4,7 +4,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import styles from './Admin.module.css'
 import api from '../../service/api.service.ts'
 import Button from "../../components/buttons/buttons.tsx";
-import { success } from "../../components/toaster/toaster";
+import { success, error } from "../../components/toaster/toaster";
 import { useLoader } from "../../components/loader/LoaderContext.tsx";
 
 const pageSize = 10;
@@ -59,7 +59,7 @@ function Admin() {
         hideLoader();
       }
     } catch (err) {
-      console.error("Fetch failed:", err);
+      console.error("Unexpected Error Happened");
       hideLoader();
     }
   };
@@ -115,6 +115,7 @@ function Admin() {
     } catch (err) {
       hideLoader();
       console.log(err);
+      error("Unexpected Error Happened");
     }
   }
 

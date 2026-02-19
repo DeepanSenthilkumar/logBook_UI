@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+// import { useLoader } from "../components/loader/LoaderContext";
 
 type AuthContextType = {
   token: string | null;
@@ -16,12 +17,14 @@ export const triggerLogout = () => {
 };
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  // const {hideLoader} = useLoader();
   const [token, setToken] = useState<string | null>(() => {
     return sessionStorage.getItem("token");
   });
 
   const login = (jwtToken: string) => {
     sessionStorage.setItem("token", jwtToken);
+    // hideLoader();
     setToken(jwtToken);
   };
 

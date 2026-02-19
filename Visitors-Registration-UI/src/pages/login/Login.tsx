@@ -43,14 +43,19 @@ function Login() {
     };
 
     console.log("Login Request Body:", requestBody);
-    const response = (await api.validateUser(requestBody)) as any;
-    debugger
-    if (response.isAdded) {
-      success("Login Success")
-      login(response.jwtToken);
-      navigate("/admin");
-    } else {
-      error("Invalid Credentials");
+    try{
+      const response = (await api.validateUser(requestBody)) as any;
+      debugger
+      if (response.isAdded) {
+        success("Login Success")
+        login(response.jwtToken);
+        navigate("/admin");
+      } else {
+        error("Invalid Credentials");
+        hideLoader();
+      }
+    } catch (err) {
+      error("Server Error");
       hideLoader();
     }
   };
